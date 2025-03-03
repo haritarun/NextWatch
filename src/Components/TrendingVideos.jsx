@@ -60,17 +60,17 @@ const TrendingVideos = () => {
     if (status === constNames.Loading) return <Loader/>;
 
     return (
-        <div className={`w-full min-h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-900'} px-5 py-5`}>
+        <div className={`w-full min-h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-[#121212]'}`}>
             {/* Trending Header */}
-            <div className="flex items-center gap-4 h-15 pb-5">
-                <div className={`${theme === 'light' ? 'text-red-600' : 'text-red-500'}`}>
+            <div className={`flex items-center gap-4 h-20 p-7 ${theme === 'light' ? 'bg-gray-200' : 'bg-[#181818]'} mb-4`}>
+                <div className={`${theme === 'light' ? 'text-red-600' : 'text-red-500 rounded-3xl bg-black'} p-2`}>
                     <FaFire size={30} />
                 </div>
                 <p className={`text-3xl font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>Trending</p>
             </div>
 
             {/* Video Grid */}
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-6 px-5 py-5">
                 {videoDetails.map((video) => (
                     <TrendingVideoCard key={video.id} video={video} theme={theme} />
                 ))}

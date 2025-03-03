@@ -9,6 +9,7 @@ import VideoItem from './Components/VideoItem';
 import AppTheme from './Context/theme';
 import Saved from './Components/Saved';
 import ProtuctedRoute from './Components/ProtuctedRoute';
+import SideBar from './Components/SideBar';
 const App = () => {
     const [savedVideos, setSavedVideos] = useState([]);
     const [likedVideos, setLikedVideos] = useState([]);
@@ -77,6 +78,7 @@ const App = () => {
             <HashRouter>
                 <Routes>
                     <Route path="/login" element={<Login />} />
+                    <Route path="/sidebar" element={<SideBar />} />
                     <Route element = {<ProtuctedRoute/>}>
                       <Route path="/" element={<Home />} />
                       <Route path="/trending" element={<Trending />} />

@@ -13,10 +13,11 @@ const Home = () => {
             {/* Main Content: Sidebar + Homepage */}
             <div className="flex w-full flex-row flex-grow h-full">
                 {/* Sidebar - Fixed with sticky */}
+
                 <SideBar />
 
                 {/* Main Content (Scrollable) */}
-                <div className="flex-grow w-full overflow-y-auto">
+                <div className="flex-grow w-5/6 overflow-y-auto">
                     <HomePage />
                 </div>
             </div>

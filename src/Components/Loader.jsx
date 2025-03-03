@@ -1,13 +1,18 @@
-
-import React from "react";
+import React, { useContext } from "react";
+import useLightDarkTheme from "../Context/LIGHTMODE"; // Import the context
 
 const Loader = () => {
-  return (
-    <div className="flex  justify-center h-screen w-screen pt-20">
-      <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    const { theme } = useLightDarkTheme(); // Get the current theme from context
 
-    </div>
-  );
+    return (
+        <div className={`flex justify-center h-screen  w-screen sm:w-5/6 pt-20 ${theme === 'light' ? 'bg-white' : 'bg-[#121212]'}`}>
+            <div
+                className={`w-12 h-12 border-4 rounded-full animate-spin ${
+                    theme === 'light' ? 'border-blue-500 border-t-transparent' : 'border-blue-400 border-t-transparent'
+                }`}
+            ></div>
+        </div>
+    );
 };
 
 export default Loader;

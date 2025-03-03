@@ -64,24 +64,24 @@ const Videos = () => {
     };
 
     return (
-        <div className={`w-full min-h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-900'} px-5 py-5`}>
+        <div className={`w-full min-h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-[#121212]'} px-5 py-5`}>
             {/* Search Bar */}
             <div className={`flex md:w-[40%] w-full items-center border-1 ${theme === 'light' ? 'border-gray-600' : 'border-gray-500'} mb-4`}>
                 <input
-                    className={`border-none outline-none flex-grow p-2 ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}
+                    className={`border-none outline-none flex-grow p-2 ${theme === 'light' ? 'bg-white text-black' : 'transparent text-white'}`}
                     type="text"
                     placeholder="Search"
                     value={searchVal}
                     onChange={(e) => setSearchVal(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && getSearch()}
                 />
-                <button 
-                    className={`h-[35px] px-4 flex items-center justify-center ${theme === 'light' ? 'bg-gray-100 border-l-2 border-gray-600' : 'bg-gray-700 border-l-2 border-gray-500'}`}
-                    style={{ color: theme === 'light' ? '#201F1F' : 'white', outline: "none", borderRadius: "0" }}
+                <div
+                    className={`h-[37px] pl-5 pr-5 mt-[1px] px-4 flex items-center justify-center ${theme === 'light' ? 'bg-gray-100  border-gray-600' : 'bg-[#212121]  border-gray-500'}`}
+                    style={{ color: theme === 'light' ? '#201F1F' : 'black', outline: "none", borderRadius: "0" }}
                     onClick={getSearch}
                 >
                     <FiSearch className={theme === 'light' ? 'text-gray-700' : 'text-gray-300'} size={20} />
-                </button>
+                </div>
             </div>
 
             {/* Video Grid */}

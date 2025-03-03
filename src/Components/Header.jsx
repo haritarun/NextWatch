@@ -25,7 +25,7 @@ const Header = () => {
     };
 
     return (
-        <div className={`w-full sticky top-0 ${isDarkMode ? 'bg-[#121212]' : 'bg-[#ffffff]'} transition-all duration-300 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        <div className={`w-full sticky top-0 ${isDarkMode ? 'bg-[#212121]' : 'bg-[#ffffff]'} transition-all duration-300 ${isDarkMode ? 'text-white' : 'text-black'}`}>
             
             {/* ✅ Header for Mobile & Desktop */}
             <div className="flex justify-between h-[60px] items-center px-6 w-full">

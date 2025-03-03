@@ -30,20 +30,24 @@ const SideBar = () => {
     };
 
     return (
-        <div className={`w-1/6 h-screen flex-col justify-between sticky top-0 overflow-y-auto pt-9 hidden md:flex 
-                        ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-800 text-white'}`}>
+        <div className={`w-1/6 h-screen flex-col justify-between sticky top-0 overflow-y-auto pt-3 hidden md:flex 
+                        ${theme === 'light' ? 'bg-white text-black' : 'bg-[#212121] text-white'}`}>
             {/* Navigation Options */}
             <div className="">
                 {OptionDetails.map((option) => (
                     <div
                         key={option.id}
-                        className={`flex items-center gap-5 p-3 pl-8 cursor-pointer rounded-lg transition-all duration-300
+                        className={`flex items-center gap-5 p-3 pl-8 cursor-pointer  transition-all duration-300
                             ${activeItem === option.id ? 
-                                (theme === 'light' ? 'bg-gray-300 text-black font-bold' : 'bg-gray-700 text-white font-bold') 
-                                : (theme === 'light' ? 'hover:bg-gray-200 text-black' : 'hover:bg-gray-600 text-white')}`}
+                                (theme === 'light' ? 'bg-gray-300 text-black font-bold' : 'bg-[#383838] text-white font-bold') 
+                                : (theme === 'light' ? 'hover:bg-gray-200 text-black' : 'hover:bg-[#383838] text-white')}`}
                         onClick={() => handleNavigation(option.id)}
                     >
-                        <option.IconComponent size={25} />
+                        <option.IconComponent 
+    size={25} 
+    className={`${activeItem === option.id ? (theme === 'light' ? '' : 'text-red-700') : ''}`} 
+/>
+
                         <p className="text-lg font-medium">{option.name}</p>
                     </div>
                 ))}

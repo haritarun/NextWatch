@@ -74,7 +74,12 @@ const VideoItem = () => {
         }
     };
 
-    if (status === constNames.Loading) return <Loader/>;
+    if (status === constNames.Loading) return (
+        <div className="w-screen flex h-screen">
+            <div className="w-1/12"></div>
+            <Loader/>
+        </div>
+    );
     if (status === constNames.Failed) return <p>Failed to load video.</p>;
 
     if (!videoDetails) return null;
@@ -84,7 +89,7 @@ const VideoItem = () => {
     const isSaved = savedVideos.some(video => video.id === videoDetails.id);
 
     return (
-        <div className={`flex flex-col w-screen h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-900'}`}>
+        <div className={`flex flex-col w-screen  ${theme === 'light' ? 'bg-gray-100' : 'bg-[#121212]'}`}>
             {/* Header */}
             <Header />
 

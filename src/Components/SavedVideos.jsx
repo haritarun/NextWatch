@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { FaFire } from "react-icons/fa";
 import SavedVideoCard from "./SavedVideosCard";
 import useLightDarkTheme from "../Context/LIGHTMODE";
+import { PiListPlusLight } from "react-icons/pi";
  // Import the context
  import AppTheme from "../Context/theme";
 
@@ -16,13 +17,13 @@ const SavedVideos = () => {
     );
 
     return (
-        <div className={`w-full min-h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-900'} px-5 py-5`}>
+        <div className={`w-full min-h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-[#121212]'} `}>
             {/* Page Header */}
-            <div className="flex items-center gap-4 pb-5">
-                <div className={`${theme === 'light' ? 'text-red-600' : 'text-red-500'}`}>
-                    <FaFire size={30} />
+            <div className={`flex items-center gap-4 h-20 p-7 ${theme === 'light' ? 'bg-gray-200' : 'bg-[#181818]'}  mb-4`}>
+                <div className={`${theme === 'light' ? 'text-red-600' : 'text-red-500 rounded-3xl bg-black'} p-2`}>
+                    <PiListPlusLight size={30} />
                 </div>
-                <p className={`text-3xl font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>Saved Videos</p>
+                <p className={`text-2xl font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}>Saved Videos</p>
             </div>
 
             {/* Search Bar */}
@@ -31,14 +32,14 @@ const SavedVideos = () => {
                 placeholder="Search saved videos..."
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
-                className={`w-full p-2 mb-4 border rounded-md ${
-                    theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-800 text-white border-gray-700'
+                className={`w-full p-2 mb-4 border md:w-[40%] md:ml-9 rounded-md ${
+                    theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-transparent text-white border-gray-700'
                 }`}
             />
 
             {/* Show saved videos or empty message */}
             {filteredVideos.length > 0 ? (
-                <div className="grid grid-cols-1 gap-6">
+                <div className="grid grid-cols-1 gap-6 py-5 px-5">
                     {filteredVideos.map((video) => (
                         <SavedVideoCard 
                             key={video.id} 
