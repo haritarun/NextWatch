@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Login from './Components/Login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {  HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Trending from './Components/Trending';
 import Gaming from './Components/Gaming';
@@ -74,7 +74,7 @@ const App = () => {
                 removeFromDislikedVideos,
             }}
         >
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route element = {<ProtuctedRoute/>}>
@@ -85,7 +85,7 @@ const App = () => {
                       <Route path="/videos/:id" element={<VideoItem />} />
                     </Route>
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </AppTheme.Provider>
     );
 };
