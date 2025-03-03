@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Login from './Components/Login';
-import {  HashRouter, Route, Routes } from 'react-router-dom';
+import {  BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Trending from './Components/Trending';
 import Gaming from './Components/Gaming';
@@ -75,7 +75,7 @@ const App = () => {
                 removeFromDislikedVideos,
             }}
         >
-            <HashRouter>
+            <BrowserRouter>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/sidebar" element={<SideBar />} />
@@ -87,7 +87,7 @@ const App = () => {
                       <Route path="/videos/:id" element={<VideoItem />} />
                     </Route>
                 </Routes>
-            </HashRouter>
+            </BrowserRouter>
         </AppTheme.Provider>
     );
 };
