@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AiFillHome, AiFillTwitterCircle } from "react-icons/ai";
 import { FaFire, FaGamepad, FaFacebook } from "react-icons/fa";
 import { PiListPlusLight } from "react-icons/pi";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { useNavigate, useLocation } from "react-router-dom";
+
+import useLightDarkTheme from "../Context/LIGHTMODE"; 
 
 const OptionDetails = [
     { id: "/", name: "Home", IconComponent: AiFillHome },
@@ -16,6 +18,7 @@ const SideBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [activeItem, setActiveItem] = useState(location.pathname);
+    const { theme } = useLightDarkTheme(); // Get the current theme from context
 
     useEffect(() => {
         setActiveItem(location.pathname);
@@ -27,14 +30,17 @@ const SideBar = () => {
     };
 
     return (
-        <div className="w-1/6 h-screen flex-col justify-between sticky top-0 overflow-y-auto pt-9 hidden md:flex bg-gray-100">
+        <div className={`w-1/6 h-screen flex-col justify-between sticky top-0 overflow-y-auto pt-9 hidden md:flex 
+                        ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-gray-800 text-white'}`}>
             {/* Navigation Options */}
-            <div className="space-y-3">
+            <div className="">
                 {OptionDetails.map((option) => (
                     <div
                         key={option.id}
                         className={`flex items-center gap-5 p-3 pl-8 cursor-pointer rounded-lg transition-all duration-300
-                            ${activeItem === option.id ? "bg-gray-400 text-white font-bold" : "hover:bg-gray-300 text-black"}`}
+                            ${activeItem === option.id ? 
+                                (theme === 'light' ? 'bg-gray-300 text-black font-bold' : 'bg-gray-700 text-white font-bold') 
+                                : (theme === 'light' ? 'hover:bg-gray-200 text-black' : 'hover:bg-gray-600 text-white')}`}
                         onClick={() => handleNavigation(option.id)}
                     >
                         <option.IconComponent size={25} />
@@ -51,7 +57,7 @@ const SideBar = () => {
                     <AiFillTwitterCircle size={30} className="text-[#3EABF2] cursor-pointer hover:opacity-80" />
                     <FaLinkedinIn size={30} className="text-[#0076B0] cursor-pointer hover:opacity-80" />
                 </div>
-                <p className="text-sm mt-3 text-gray-600">
+                <p className={`text-sm mt-3 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                     Enjoy! Now to see your channels and recommendations!
                 </p>
             </div>

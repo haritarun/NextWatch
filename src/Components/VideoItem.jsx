@@ -7,7 +7,9 @@ import VideoItemDetails from "./VideoItemDetails";
 import { formatDistanceToNowStrict } from "date-fns";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { BiListPlus } from "react-icons/bi";
-import AppTheme from "../Context/theme";
+import useLightDarkTheme from "../Context/LIGHTMODE";
+ // Import the context
+ import AppTheme from "../Context/theme";
 import Loader from "./Loader";
 
 const constNames = {
@@ -20,7 +22,8 @@ const VideoItem = () => {
     const { id } = useParams(); 
     const [status, setStatus] = useState(constNames.Loading);
     const [videoDetails, setVideoDetails] = useState(null);
-
+    const { theme } = useLightDarkTheme(); // Get the current theme from context
+    
     const {
         savedVideos, addToSavedVideos, removeFromSavedVideos,
         likedVideos, addToLikedVideos, removeFromLikedVideos,
@@ -81,7 +84,7 @@ const VideoItem = () => {
     const isSaved = savedVideos.some(video => video.id === videoDetails.id);
 
     return (
-        <div className="flex flex-col w-screen h-screen">
+        <div className={`flex flex-col w-screen h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-900'}`}>
             {/* Header */}
             <Header />
 
@@ -90,13 +93,13 @@ const VideoItem = () => {
                 <SideBar />
 
                 {/* Main Video Section */}
-                <div className="flex-grow  w-full overflow-y-auto scrollbar-hide p-5">
+                <div className={`flex-grow w-full overflow-y-auto scrollbar-hide p-5 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
                     <VideoItemDetails url={videoDetails.videoUrl} />
                     <p className="text-lg font-medium pt-3 mb-2">{videoDetails.title}</p>
 
                     {/* Views and Published Date */}
                     <div className="flex flex-col md:flex-row justify-between mt-4">
-                        <div className="flex mt-2 text-sm text-gray-600">
+                        <div className={`flex mt-2 text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                             <p>{videoDetails.viewCount} views</p>
                             <p className="ml-2">
                                 {formatDistanceToNowStrict(new Date(videoDetails.publishedAt), { addSuffix: true })}
@@ -106,7 +109,7 @@ const VideoItem = () => {
                             {/* Like Button */}
                             <div
                                 className={`rounded-md flex items-center gap-2 p-2 ${
-                                    isLiked ? "text-blue-500" : "text-gray-600"
+                                    isLiked ? "text-blue-500" : theme === 'light' ? 'text-gray-600' : 'text-gray-400'
                                 }`}
                                 onClick={() => {
                                     if (isLiked) {
@@ -123,7 +126,7 @@ const VideoItem = () => {
                             {/* Dislike Button */}
                             <div
                                 className={`rounded-md pointer flex items-center gap-2 p-2 ${
-                                    isDisliked ? "text-red-500" : "text-gray-600"
+                                    isDisliked ? "text-red-500" : theme === 'light' ? 'text-gray-600' : 'text-gray-400'
                                 }`}
                                 onClick={() => {
                                     if (isDisliked) {
@@ -140,7 +143,7 @@ const VideoItem = () => {
                             {/* Save Button */}
                             <div
                                 className={`rounded-md flex items-center gap-2 p-2 ${
-                                    isSaved ? "text-blue-500" : "text-gray-600"
+                                    isSaved ? "text-blue-500" : theme === 'light' ? 'text-gray-600' : 'text-gray-400'
                                 }`}
                                 onClick={() =>
                                     isSaved ? removeFromSavedVideos(videoDetails.id) : addToSavedVideos(videoDetails)
@@ -151,7 +154,7 @@ const VideoItem = () => {
                         </div>
                     </div>
 
-                    <hr className="mt-4" />
+                    <hr className={`mt-4 ${theme === 'light' ? 'border-gray-300' : 'border-gray-700'}`} />
 
                     {/* Channel Info */}
                     <div className="flex items-center mt-4">
@@ -161,17 +164,17 @@ const VideoItem = () => {
                             className="w-10 h-10 rounded-full"
                         />
                         <div className="ml-2">
-                            <p className="text-sm font-semibold text-gray-700">
+                            <p className={`text-sm font-semibold ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                                 {videoDetails.channel.name}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className={`text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                                 {videoDetails.channel.subscriberCount} subscribers
                             </p>
                         </div>
                     </div>
 
                     {/* Video Description */}
-                    <p className="text-gray-700 mt-4">{videoDetails.description}</p>
+                    <p className={`mt-4 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>{videoDetails.description}</p>
                 </div>
             </div>
         </div>
