@@ -75,7 +75,7 @@ const VideoItem = () => {
     };
 
     if (status === constNames.Loading) return (
-        <div className="w-screen flex h-screen">
+        <div className={`w-screen flex h-screen ${theme === 'light' ? 'bg-gray-100' : 'bg-[#121212]'} `}>
             <div className="w-1/12"></div>
             <Loader/>
         </div>

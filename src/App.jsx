@@ -10,6 +10,7 @@ import AppTheme from './Context/theme';
 import Saved from './Components/Saved';
 import ProtuctedRoute from './Components/ProtuctedRoute';
 import SideBar from './Components/SideBar';
+import NotFound from './Components/NotFound';
 const App = () => {
     const [savedVideos, setSavedVideos] = useState([]);
     const [likedVideos, setLikedVideos] = useState([]);
@@ -75,7 +76,7 @@ const App = () => {
                 removeFromDislikedVideos,
             }}
         >
-            <BrowserRouter>
+            <BrowserRouter basename="/NextWatch">
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/sidebar" element={<SideBar />} />
@@ -86,6 +87,7 @@ const App = () => {
                       <Route path="/saved-videos" element={<Saved />} />
                       <Route path="/videos/:id" element={<VideoItem />} />
                     </Route>
+                    <Route path='*' element = {<NotFound />} />
                 </Routes>
             </BrowserRouter>
         </AppTheme.Provider>

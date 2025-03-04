@@ -84,12 +84,29 @@ const Videos = () => {
                 </div>
             </div>
 
-            {/* Video Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-                {videoDetails.map((video) => (
-                    <VideoCard key={video.id} video={video} theme={theme} />
-                ))}
-            </div>
+            {/* Show No Results Image If No Videos Found */}
+            {videoDetails.length === 0 ? (
+                <div className="flex flex-col items-center text-center mt-10">
+                    <img
+                        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+                        alt="No search results"
+                        className="w-[40%] max-w-xs"
+                    />
+                    <p className={`text-xl font-medium mt-5 ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                        No Search Results Found
+                    </p>
+                    <p className={`text-gray-500 ${theme === 'light' ? 'text-black' : 'text-gray-400'}`}>
+                        Try different keywords or check your internet connection.
+                    </p>
+                </div>
+            ) : (
+                // Video Grid Display
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+                    {videoDetails.map((video) => (
+                        <VideoCard key={video.id} video={video} theme={theme} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

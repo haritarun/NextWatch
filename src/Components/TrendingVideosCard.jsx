@@ -14,7 +14,7 @@ const TrendingVideoCard = ({ video }) => {
     return (
         <div
             className={`overflow-hidden md:flex hover:shadow-xl transition-shadow duration-300 rounded-sm ${
-                theme === 'light' ? 'bg-white' : 'bg-transparent'
+                theme === 'light' ? 'bg-transparent' : 'bg-transparent'
             }`}
             onClick={() => navigate(`/videos/${id}`)}
         >

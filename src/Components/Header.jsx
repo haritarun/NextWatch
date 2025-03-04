@@ -6,6 +6,7 @@ import { IoReorderThree } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { FaSun, FaMoon } from "react-icons/fa";
 import useLightDarkTheme from "../Context/LIGHTMODE"; // Import the context
+import { MdOutlineLightMode } from "react-icons/md";
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // ✅ Mobile Menu State
@@ -38,7 +39,7 @@ const Header = () => {
                 
                 <div className="flex space-x-4 items-center md:hidden"> 
                     <div onClick={changeTheme} className="text-lg">
-                        {isDarkMode ? <FaSun size={20} className="text-yellow-400" /> : <FaMoon size={20} className="text-gray-700" />}
+                        {isDarkMode ? <MdOutlineLightMode size={25} className="text-white" /> : <FaMoon size={25} className="text-gray-700" />}
                     </div>
                     <div onClick={toggleMobileMenu} className="text-lg">
                         <IoReorderThree size={28} className={isDarkMode ? 'text-white' : 'text-black'} />
@@ -51,7 +52,7 @@ const Header = () => {
                 {/* ✅ Desktop Navigation */}
                 <div className="hidden md:flex space-x-6 items-center">
                     <div onClick={changeTheme} className="text-lg">
-                        {isDarkMode ? <FaSun size={20} className="text-yellow-400" /> : <FaMoon size={20} className="text-gray-700" />}
+                        {isDarkMode ? <MdOutlineLightMode  size={25} className="text-white" /> : <FaMoon size={25} className="text-gray-700" />}
                     </div>
                     <img src='https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png' alt='profile' className='w-8 h-8 rounded-full' />
                     <div
