@@ -3,6 +3,7 @@ import { AiFillHome, AiFillTwitterCircle } from "react-icons/ai";
 import { FaFire, FaGamepad, FaFacebook } from "react-icons/fa";
 import { PiListPlusLight } from "react-icons/pi";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { PiListPlusBold } from "react-icons/pi";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import useLightDarkTheme from "../Context/LIGHTMODE"; 
@@ -11,7 +12,7 @@ const OptionDetails = [
     { id: "/", name: "Home", IconComponent: AiFillHome },
     { id: "/trending", name: "Trending", IconComponent: FaFire },
     { id: "/gaming", name: "Gaming", IconComponent: FaGamepad },
-    { id: "/saved-videos", name: "Saved videos", IconComponent: PiListPlusLight }
+    { id: "/saved-videos", name: "Saved videos", IconComponent: PiListPlusBold }
 ];
 
 const SideBar = () => {
@@ -45,7 +46,7 @@ const SideBar = () => {
                     >
                         <option.IconComponent 
     size={25} 
-    className={`${activeItem === option.id ? (theme === 'light' ? '' : 'text-red-700') : ''}`} 
+    className={`${activeItem === option.id ? (theme === 'light' ? 'text-red-600' : 'text-red-700') : ''}`} 
 />
 
                         <p className="text-lg font-medium">{option.name}</p>
