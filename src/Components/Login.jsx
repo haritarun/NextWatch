@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react'; // For icons (optional)
 import Loader from './Loader';
 const Login = () => {
-    const [username, setUsername] = useState('dillesh');
-    const [password, setPassword] = useState('dillesh123');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [showpassword,setShowpassword] = useState('password')
     const [notFound, setNotFound] = useState('');
     const [isLoading, setIsLoading] = useState(false);
